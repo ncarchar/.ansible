@@ -10,6 +10,10 @@
       - install
       - dotfiles
       - stow
+- name: Backup bashrc
+  become: true
+  ansible.builtin.shell:
+    cmd: mv ~/.bashrc ~/.bashrc_bu
 - name: Stow dotfiles personal
   shell: cd $HOME/.dotfiles && ./stow-personal
   tags:
@@ -22,3 +26,11 @@
       - install
       - dotfiles
       - stow
+- name: Source bashrc
+  become: true
+  ansible.builtin.shell:
+    cmd: source ~/.bashrc
+- name: Remove old bashrc
+  become: true
+  ansible.builtin.shell:
+    cmd: rm ~/.bashrc_bu
