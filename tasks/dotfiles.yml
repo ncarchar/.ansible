@@ -25,9 +25,6 @@
       - install
       - dotfiles
       - stow
-- name: Source bashrc
-  ansible.builtin.shell:
-    cmd: source ~/.bashrc
 - name: Remove old bashrc
   ansible.builtin.shell:
     cmd: rm ~/.bashrc_bu
