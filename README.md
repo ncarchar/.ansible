@@ -1,6 +1,6 @@
 # Fedora Local Playbook
 
-Ansible playbook to automate the setup of local environment using Fedora(Windows Subsystem for Linux).
+Ansible playbook to automate the setup of local environment using Fedora.
 
 ## Using WSL
 
