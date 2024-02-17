@@ -17,7 +17,7 @@ sudo dnf install ansible -y
 sudo dnf install git -y
 
 ## pull ansible config
-git clone git@github.com:ncarchar/.ansible.git
+git clone https://github.com/ncarchar/.ansible.git
 
 ## run playbook
 ansible-playbook local.yml -K --ask-vault-pass
