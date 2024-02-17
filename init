@@ -1,5 +1,25 @@
 #!/usr/bin/env bash
 
+## Setup new user in WSL
+# dnf install passwd -y
+# dnf install util-linux-user -y
+# dnf install cracklib-dicts -y
+#
+# useradd -m $username
+# sudo usermod -aG wheel $username
+# passwd $username
+# su - $username
+
+## Install ansible
+sudo dnf install upgrade
+sudo dnf install ansible
+sudo dnf install git
+
+## pull ansible config
+git clone https://github.com/ncarchar/.ansible.git
+
+## run playbook
+ansible-playbook local.yml -K --ask-vault-pass
 ## Install ansible
 sudo dnf install update
 sudo dnf install ansible
