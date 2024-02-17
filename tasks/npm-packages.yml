@@ -1,0 +1,20 @@
+- name: Add npm to path
+  shell: PATH=usr/local/bin:$PATH
+  tags:
+      - install
+      - node
+- name: Install global npm packages
+  become: true
+  community.general.npm:
+      name: "{{ item }}"
+      global: yes
+      state: latest
+  loop:
+      - "@angular/cli"
+      - "npm"
+      - "prettier"
+      - "typescript"
+      - "eslint"
+  tags:
+      - install
+      - node

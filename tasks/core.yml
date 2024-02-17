@@ -1,0 +1,60 @@
+- name: Install Development Tools and essential build tools
+  become: true
+  dnf:
+    name:
+      - "@Development Tools"
+      - cmake
+      - gcc-c++
+      - make
+      - autoconf
+      - automake
+      - libtool
+    state: present
+  tags:
+    - install
+    - core
+
+- name: Install Programming Languages and Development Tools
+  become: true
+  dnf:
+    name:
+      - cargo
+      - rust
+      - java-17-openjdk-devel
+      - java-21-openjdk-devel
+      - nodejs
+      - maven
+      - neovim
+      - git
+    state: present
+  tags:
+    - install
+    - programming
+
+- name: Install Utility Tools
+  become: true
+  dnf:
+    name:
+      - fzf
+      - ripgrep
+      - task
+      - tmux
+      - zoxide
+      - expect
+      - rpmdevtools
+      - rpmlint
+      - iputils
+      - wget
+      - zip
+      - unzip
+      - htop
+      - ncdu
+      - tree
+      - jq
+      - stow
+      - neofetch
+      - chromium
+    state: present
+  tags:
+    - install
+    - utilities

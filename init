@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+## Install ansible
+sudo dnf install update
+sudo dnf install ansible
+sudo dnf install git
+
+## pull ansible config
+git clone https://github.com/ncarchar/.ansible.git
+
+## run playbook
+ansible-playbook local.yml -K --ask-vault-pass

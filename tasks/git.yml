@@ -1,0 +1,38 @@
+- name: Set Git config universal
+  git_config:
+      name: "{{ item.name }}"
+      value: "{{ item.value }}"
+      scope: global
+  loop:
+      - { name: "init.defaultBranch", value: "main" }
+      - {
+            name: "filter.pom-remove-password.clean",
+            value: "sed 's|<password>.*</password>|<password>***FILTERED***</password>|'",
+        }
+  tags:
+      - git-personal
+      - git-work
+
+- name: Set Git config for personal
+  git_config:
+      name: "{{ item.name }}"
+      value: "{{ item.value }}"
+      scope: global
+  loop:
+      - { name: "user.name", value: "ncarchar" }
+      - { name: "user.email", value: "carsoncmiller@proton.me" }
+  when: is_personal
+  tags:
+      - git-personal
+
+- name: Set Git config for work
+  git_config:
+      name: "{{ item.name }}"
+      value: "{{ item.value }}"
+      scope: global
+  loop:
+      - { name: "user.email", value: "carson.miller@covestro.com" }
+      - { name: "user.name", value: "Carson Miller" }
+  when: is_work
+  tags:
+      - git-work
