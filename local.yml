@@ -3,7 +3,6 @@
       is_personal: "{{ lookup('env', 'USER') == 'ncarchar' }}"
       is_work: "{{ lookup('env', 'USER') == 'cvhew' }}"
       code: "{{ lookup('env', 'HOME') }}/code"
-      source_key: "./.ssh/id_ed25519"
       source_key: "{{ './.ssh/id_ed25519' if is_personal else lookup('env', 'HOME') + '/.covfiles/.ssh/id_ed25519' }}"
       dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
   pre_tasks:
