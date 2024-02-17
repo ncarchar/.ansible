@@ -11,12 +11,12 @@ Ansible playbook to automate the setup of local environment using Fedora.
 
 2. **Create a Folder for WSL Distro:**
    ```
-   mkdir $HOME\\wsl\\fedora
+   mkdir $HOME\wsl\fedora
    ```
 
 3. **Install the Distro:**
    ```
-   wsl --import fedora $HOME\\wsl\\fedora $HOME\\Downloads\\layer.tar
+   wsl --import fedora $HOME\wsl\fedora $HOME\Downloads\layer.tar
    ```
 
 ## Setting Up a New User
