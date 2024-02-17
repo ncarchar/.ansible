@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 ## Setup new user in WSL (export username!)
+sudo dnf install upgrade -y
 dnf install passwd -y
 dnf install util-linux-user -y
 dnf install cracklib-dicts -y
@@ -11,10 +12,9 @@ passwd $username
 
 ## su - $username
 
-## Install ansible
-sudo dnf install upgrade
-sudo dnf install ansible
-sudo dnf install git
+## Install ansible and git
+sudo dnf install ansible -y
+sudo dnf install git -y
 
 ## pull ansible config
 git clone git@github.com:ncarchar/.ansible.git
