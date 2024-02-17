@@ -1,0 +1,28 @@
+- hosts: localhost
+  vars:
+      isCVHEW: "{{ lookup('env', 'USER') == 'cvhew' }}"
+      isNCARCHAR: "{{ lookup('env', 'USER') == 'ncarchar' }}"
+      code_dir: "{{ lookup('env', 'HOME') }}/code"
+      source_key: "./.ssh/id_ed25519"
+      dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
+  pre_tasks:
+      - name: Update DNF
+        become: true
+        dnf:
+            name: "*"
+            state: latest
+        tags:
+            - install
+            - core
+      - name: Ensure /code directory exists
+        file:
+            path: "{{ code_dir }}"
+            state: directory
+            mode: "0755"
+        tags:
+            - setup
+            - core
+  tasks:
+      - name: Import ssh keys
+        import_tasks: tasks/ssh.yml
+        when: isNCARCHAR
