@@ -56,5 +56,5 @@ ansible-playbook local.yml -K --ask-vault-pass
 
 ## Additional Steps
 
-- After the playbook execution, make sure to source the copied `.bashrc` to apply the new configurations.
-- Update .ansible repository to use ssh now that it is configured
+- After the playbook execution, make sure to source the copied `.bashrc`.
+- Update .ansible repository to use ssh now that it is configured.

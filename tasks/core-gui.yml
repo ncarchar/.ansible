@@ -6,7 +6,7 @@
   tags:
       - setup
       - core
-- name: Install GUI specific items
+- name: Install GUI packages
   become: true
   dnf:
     name:

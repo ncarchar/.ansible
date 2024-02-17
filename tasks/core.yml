@@ -1,4 +1,4 @@
-- name: Install Development Tools and essential build tools
+- name: Install development tools
   become: true
   dnf:
     name:
@@ -14,7 +14,7 @@
     - install
     - core
 
-- name: Install Programming Languages and Development Tools
+- name: Install languages and development tools
   become: true
   dnf:
     name:
@@ -31,7 +31,7 @@
     - install
     - programming
 
-- name: Install Utility Tools
+- name: Install utilities
   become: true
   dnf:
     name:
