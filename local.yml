@@ -29,20 +29,20 @@
         import_tasks: tasks/ssh.yml
       - name: Setup git
         import_tasks: tasks/git.yml
-      # - name: Setup core packages
-      #   import_tasks: tasks/core.yml
-      # - name: Setup covfiles
-      #   import_tasks: tasks/covfiles.yml
-      #   when: is_work
-      # - name: Setup covcerts
-      #   import_tasks: tasks/covcerts.yml
-      #   when: is_work
-      # - name: Setup .dotfiles
-      #   import_tasks: tasks/dotfiles.yml
-      # - name: Setup gui packages
-      #   import_tasks: tasks/core-gui.yml
-      #   when: is_personal
-      # - name: Setup npm packages
-      #   import_tasks: tasks/npm-packages.yml
-      # - name: Setup wakatime
-      #   import_tasks: tasks/wakatime.yml
+      - name: Setup core packages
+        import_tasks: tasks/core.yml
+      - name: Setup covfiles
+        import_tasks: tasks/covfiles.yml
+        when: is_work
+      - name: Setup covcerts
+        import_tasks: tasks/covcerts.yml
+        when: is_work
+      - name: Setup .dotfiles
+        import_tasks: tasks/dotfiles.yml
+      - name: Setup gui packages
+        import_tasks: tasks/core-gui.yml
+        when: is_personal
+      - name: Setup npm packages
+        import_tasks: tasks/npm-packages.yml
+      - name: Setup wakatime
+        import_tasks: tasks/wakatime.yml

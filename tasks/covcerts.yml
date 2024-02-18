@@ -12,9 +12,17 @@
       - covfiles
 - name: Add certs to cert chain
   become: true
-  shell: cd {{ user_home + '/.covfiles/update-certs' }}
+  shell: cd {{ user_home + '/.covfiles' }} && './update-certs'
   tags:
       - install
       - core
       - certs
+      - covfiles
+- name: Setup DNS
+  become: true
+  shell: cd {{ user_home + '/.covfiles' }} && ./update-dns
+  tags:
+      - install
+      - core
+      - dns
       - covfiles

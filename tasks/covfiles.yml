@@ -1,24 +1,32 @@
-- name: Cloning .dotfiles
+- name: Cloning .covfiles
   ansible.builtin.git:
       repo: "git@gitlab.ssh.covestro.com:carson.miller/covfiles.git"
-      dest: "user_home/.covfiles"
+      dest: "{{ lookup('env', 'HOME') }}/.covfiles"
       recursive: yes
       update: yes
       accept_hostkey: yes
       version: main
   tags:
-      - install
       - covfiles
-      - stow
+
 - name: Backup bash_profile
   ansible.builtin.shell:
     cmd: mv ~/.bash_profile ~/.bash_profile_bu
+
 - name: Stow covfiles
   shell: cd $HOME/.covfiles && ./stow-work
   tags:
-      - install
-      - dotfiles
-      - stow
+      - covfiles
+
 - name: Remove bash_profile backup
   ansible.builtin.shell:
     cmd: rm ~/.bash_profile_bu
+  tags:
+      - covfiles
+
+- name: Mirror to Windows
+  become: true
+  shell: cd {{ user_home + '/.covfiles' }} && './mirror-to-windows'
+  tags:
+      - mirror
+      - covfiles

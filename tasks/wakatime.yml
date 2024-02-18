@@ -5,6 +5,4 @@
     mode: 0600
     decrypt: yes
   tags:
-    - dotfiles
-    - install
     - wakatime

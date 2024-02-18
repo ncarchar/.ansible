@@ -29,7 +29,7 @@
     state: present
   tags:
     - install
-    - programming
+    - core
 
 - name: Install utilities
   become: true
@@ -54,7 +54,8 @@
       - stow
       - neofetch
       - chromium
+      - xclip
     state: present
   tags:
     - install
-    - utilities
+    - core

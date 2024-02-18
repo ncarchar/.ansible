@@ -5,7 +5,7 @@
       state: directory
   tags:
       - dotfiles
-      - install
+      - covfiles
       - ssh
 - name: Install ssh key
   copy:
@@ -14,7 +14,7 @@
       mode: 0600
   tags:
       - dotfiles
-      - install
+      - covfiles
       - ssh
 - name: Install ssh key public
   copy:
@@ -23,13 +23,17 @@
       mode: 0644
   tags:
       - dotfiles
-      - install
+      - covfiles
       - ssh
 - name: Set authorized key from file
   authorized_key:
       user: "{{ lookup('env', 'USER') }}"
       state: present
       key: "{{ lookup('file', item) }}"
-  loop: "{{ query('fileglob', user_home + '/.ssh/*.pub') }}"
+  loop: "{{ query('fileglob', lookup('env', 'HOME') + '/.ssh/*.pub') }}"
   loop_control:
       label: "{{ item }}"
+  tags:
+      - dotfiles
+      - covfiles
+      - ssh
