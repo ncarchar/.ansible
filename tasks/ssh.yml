@@ -30,6 +30,6 @@
       user: "{{ lookup('env', 'USER') }}"
       state: present
       key: "{{ lookup('file', item) }}"
-  loop: "{{ query('fileglob', lookup('env', 'HOME') + '/.ssh/*.pub') }}"
+  loop: "{{ query('fileglob', user_home + '/.ssh/*.pub') }}"
   loop_control:
       label: "{{ item }}"

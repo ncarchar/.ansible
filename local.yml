@@ -1,10 +1,12 @@
 - hosts: localhost
   vars:
+      user_home: "{{ lookup('env', 'HOME') }}"
       is_personal: "{{ lookup('env', 'USER') == 'ncarchar' }}"
       is_work: "{{ lookup('env', 'USER') == 'cvhew' }}"
-      code: "{{ lookup('env', 'HOME') }}/code"
-      source_key: "{{ './.ssh/id_ed25519' if is_personal else lookup('env', 'HOME') + '/.covfiles/.ssh/id_ed25519' }}"
-      dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
+      code: "{{ user_home }}/code"
+      source_key: "{{ './.ssh/id_ed25519' if is_personal else './.sshc/id_ed25519' }}"
+      dest_key: "{{ user_home }}/.ssh/id_ed25519"
+      source_waka: "./wakatime/.wakatime.cfg"
   pre_tasks:
       - name: Update DNF
         become: true
@@ -27,12 +29,20 @@
         import_tasks: tasks/ssh.yml
       - name: Setup git
         import_tasks: tasks/git.yml
-      - name: Setup core packages
-        import_tasks: tasks/core.yml
-      - name: Setup .dotfiles
-        import_tasks: tasks/dotfiles.yml
-      - name: Setup gui packages
-        import_tasks: tasks/core-gui.yml
-        when: is_personal
-      - name: Setup npm packages
-        import_tasks: tasks/npm-packages.yml
+      # - name: Setup core packages
+      #   import_tasks: tasks/core.yml
+      # - name: Setup covfiles
+      #   import_tasks: tasks/covfiles.yml
+      #   when: is_work
+      # - name: Setup covcerts
+      #   import_tasks: tasks/covcerts.yml
+      #   when: is_work
+      # - name: Setup .dotfiles
+      #   import_tasks: tasks/dotfiles.yml
+      # - name: Setup gui packages
+      #   import_tasks: tasks/core-gui.yml
+      #   when: is_personal
+      # - name: Setup npm packages
+      #   import_tasks: tasks/npm-packages.yml
+      # - name: Setup wakatime
+      #   import_tasks: tasks/wakatime.yml

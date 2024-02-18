@@ -1,0 +1,20 @@
+- name: Install core utils and ca-certs
+  become: true
+  dnf:
+      name:
+          - coreutils
+          - ca-certificates
+      state: present
+  tags:
+      - install
+      - core
+      - certs
+      - covfiles
+- name: Add certs to cert chain
+  become: true
+  shell: cd {{ user_home + '/.covfiles/update-certs' }}
+  tags:
+      - install
+      - core
+      - certs
+      - covfiles

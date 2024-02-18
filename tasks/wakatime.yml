@@ -1,0 +1,10 @@
+- name: Install and decrypt Wakatime config
+  copy:
+    src: "./.wakatime/.wakatime.cfg"
+    dest: "{{ user_home }}/.wakatime.cfg"
+    mode: 0600
+    decrypt: yes
+  tags:
+    - dotfiles
+    - install
+    - wakatime
