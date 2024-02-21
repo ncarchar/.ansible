@@ -15,6 +15,7 @@
       - "prettier"
       - "typescript"
       - "eslint"
+      - "aws-cdk"
   tags:
       - install
       - node
