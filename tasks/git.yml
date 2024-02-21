@@ -9,6 +9,7 @@
             name: "filter.pom-remove-password.clean",
             value: "sed 's|<password>.*</password>|<password>***FILTERED***</password>|'",
         }
+      - { name: "core.excludesFile", value: "~/.gitignore" }
   tags:
       - git-personal
       - git-work
