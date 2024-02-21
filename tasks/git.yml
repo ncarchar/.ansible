@@ -14,6 +14,27 @@
       - git-personal
       - git-work
 
+- name: Ensure global .gitignore exists
+  file:
+    path: "~/.gitignore"
+    state: touch
+  tags:
+    - git-personal
+    - git-work
+
+- name: Add patterns to global .gitignore
+  lineinfile:
+    path: "~/.gitignore"
+    line: "{{ item }}"
+    create: no
+  loop:
+    - "_task.md"
+    - "target/"
+    - "dist/"
+  tags:
+    - git-personal
+    - git-work
+
 - name: Set Git config personal
   git_config:
       name: "{{ item.name }}"
