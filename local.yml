@@ -31,6 +31,8 @@
         import_tasks: tasks/git.yml
       - name: Setup core packages
         import_tasks: tasks/core.yml
+      - name: Setup SDKMAN
+        import_tasks: tasks/sdkman.yml
       - name: Setup covfiles
         import_tasks: tasks/covfiles.yml
         when: is_work

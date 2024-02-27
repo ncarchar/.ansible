@@ -20,8 +20,6 @@
     name:
       - cargo
       - rust
-      - java-17-openjdk-devel
-      - java-21-openjdk-devel
       - nodejs
       - maven
       - neovim
