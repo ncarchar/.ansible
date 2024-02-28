@@ -1,14 +1,14 @@
-- name: Install and configure SDKMAN with Java
-  hosts: all
-  become: yes
-  tasks:
-    - name: Check if SDKMAN is already installed
-      stat:
-        path: "{{ ansible_env.HOME }}/.sdkman/bin/sdkman-init.sh"
-      register: sdkman_installed
+- name: Check if SDKMAN is already installed
+  stat:
+      path: "{{ ansible_env.HOME }}/.sdkman/bin/sdkman-init.sh"
+  register: sdkman_installed
+  tags:
+      - sdkman
 
-    - name: Download and install SDKMAN
-      shell: curl -s "https://get.sdkman.io" | bash
-      args:
-        creates: "{{ ansible_env.HOME }}/.sdkman/bin/sdkman-init.sh"
-      when: not sdkman_installed.stat.exists
+- name: Download and install SDKMAN
+  shell: curl -s "https://get.sdkman.io" | bash
+  args:
+      creates: "{{ ansible_env.HOME }}/.sdkman/bin/sdkman-init.sh"
+  when: not sdkman_installed.stat.exists
+  tags:
+      - sdkman
