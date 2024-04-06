@@ -9,6 +9,8 @@
       - autoconf
       - automake
       - libtool
+      - libicu
+      - readline
     state: present
   tags:
     - install
