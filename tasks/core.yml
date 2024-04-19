@@ -1,62 +1,63 @@
 - name: Install development tools
   become: true
   dnf:
-    name:
-      - "@Development Tools"
-      - cmake
-      - gcc-c++
-      - make
-      - autoconf
-      - automake
-      - libtool
-      - libicu
-      - readline
-    state: present
+      name:
+          - "@Development Tools"
+          - cmake
+          - gcc-c++
+          - make
+          - autoconf
+          - automake
+          - libtool
+          - libicu
+          - readline
+          - procps-ng
+      state: present
   tags:
-    - install
-    - core
+      - install
+      - core
 
 - name: Install languages and development tools
   become: true
   dnf:
-    name:
-      - cargo
-      - rust
-      - nodejs
-      - maven
-      - neovim
-      - git
-      - golang
-    state: present
+      name:
+          - cargo
+          - rust
+          - nodejs
+          - maven
+          - neovim
+          - git
+          - golang
+      state: present
   tags:
-    - install
-    - core
+      - install
+      - core
 
 - name: Install utilities
   become: true
   dnf:
-    name:
-      - fzf
-      - ripgrep
-      - task
-      - tmux
-      - zoxide
-      - expect
-      - rpmdevtools
-      - rpmlint
-      - iputils
-      - wget
-      - zip
-      - unzip
-      - htop
-      - ncdu
-      - tree
-      - jq
-      - stow
-      - neofetch
-      - chromium
-      - xclip
-    state: present
+      name:
+          - fzf
+          - ripgrep
+          - task
+          - tmux
+          - zoxide
+          - expect
+          - rpmdevtools
+          - rpmlint
+          - iputils
+          - wget
+          - zip
+          - unzip
+          - htop
+          - ncdu
+          - tree
+          - jq
+          - stow
+          - neofetch
+          - chromium
+          - xclip
+      state: present
   tags:
-    - install
-    - core
+      - install
+      - core
